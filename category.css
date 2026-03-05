@@ -1,0 +1,264 @@
+/*
+ * Project File Purpose:
+ * - category.css
+ * - Defines visual styles for StageOn UI sections and responsive behavior.
+ */
+:root {
+  --bg: #f6f2fb;
+  --text: #111827;
+  --muted: #635a78;
+  --line: rgba(116, 58, 168, 0.2);
+  --card: rgba(255, 255, 255, 0.9);
+  --a1: #8c48d7;
+  --a2: #b65ce6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(246, 242, 251, 0.92);
+}
+
+.nav-wrap {
+  min-height: 72px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 36px;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2f1f49;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #7c3aed;
+}
+
+.auth-links {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(90deg, var(--a1), var(--a2), #5f9de0);
+}
+
+.btn-secondary {
+  color: #111827;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: #111827;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  padding: 6px 10px 6px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.profile-link img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+main {
+  padding: 46px 0 56px;
+}
+
+.category-hero {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(243, 237, 252, 0.85));
+  overflow: hidden;
+}
+
+.category-hero img {
+  width: 100%;
+  height: min(42vw, 360px);
+  object-fit: cover;
+  display: block;
+}
+
+.category-content {
+  padding: 22px;
+}
+
+.category-content h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+}
+
+.category-content p {
+  margin: 0 0 18px;
+  color: #374151;
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+.category-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.artist-list-section {
+  margin-top: 18px;
+}
+
+.artist-list-section h2 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+}
+
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.compact-grid {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.artist-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.artist-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.compact-card {
+  max-width: 210px;
+  margin: 0 auto;
+  border-radius: 16px;
+}
+
+.compact-card img {
+  height: 150px;
+}
+
+.artist-card-content {
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.compact-card .artist-card-content {
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.artist-card-content h3 {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.artist-card-content p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.artist-card-sub {
+  font-weight: 600;
+}
+
+.artist-card-empty {
+  padding: 14px;
+}
+
+.artist-card-empty h3,
+.artist-card-empty p {
+  margin: 0 0 8px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+@media (max-width: 720px) {
+  .nav-wrap {
+    padding: 14px 0;
+    min-height: auto;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .artist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

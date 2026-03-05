@@ -1,0 +1,569 @@
+/*
+ * Project File Purpose:
+ * - dashboard.css
+ * - Defines visual styles for StageOn UI sections and responsive behavior.
+ */
+:root {
+  --bg: #f2edf9;
+  --surface: rgba(255, 255, 255, 0.78);
+  --line: rgba(116, 58, 168, 0.2);
+  --text: #111827;
+  --muted: #635a78;
+  --accent-a: #8c48d7;
+  --accent-b: #b65ce6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.dashboard {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  position: relative;
+}
+
+.dashboard::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../img/singer background.png") center center / min(76vh, 620px) no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.sidebar {
+  position: relative;
+  z-index: 1;
+  border-right: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(245, 236, 252, 0.66));
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brand-logo {
+  width: 150px;
+}
+
+.menu {
+  display: grid;
+  gap: 8px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+
+.menu-item.active,
+.menu-item:hover {
+  background: linear-gradient(90deg, rgba(140, 72, 215, 0.22), rgba(182, 92, 230, 0.22));
+}
+
+.logout-btn {
+  margin-top: auto;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  padding: 26px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.admin-search {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 520px;
+}
+
+.admin-search input {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.admin-search button {
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+}
+
+.label {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.user-chip {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.user-chip img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-chip strong,
+.user-chip span {
+  display: block;
+  line-height: 1.25;
+}
+
+.user-chip span {
+  color: var(--muted);
+  font-size: 0.79rem;
+}
+
+.stats {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.stat-card {
+  padding: 16px;
+}
+
+.stat-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stat-card h2 {
+  margin: 8px 0 6px;
+}
+
+.stat-card small {
+  color: #0c8a62;
+  font-weight: 600;
+}
+
+.grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 14px;
+}
+
+.panel {
+  padding: 16px;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.panel-head h3 {
+  margin: 0;
+}
+
+.panel-head a {
+  color: #6d28d9;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.event-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.event-list li {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.event-list strong,
+.event-list span,
+.event-list em {
+  display: block;
+}
+
+.event-list span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.event-list em {
+  font-style: normal;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0c8a62;
+}
+
+.actions {
+  display: grid;
+  gap: 10px;
+}
+
+.actions button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 11px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  border-color: rgba(47, 158, 183, 0.4);
+}
+
+.actions .action-link {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 11px 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  text-align: center;
+}
+
+.admin-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  padding: 12px 10px;
+}
+
+.admin-table th {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.admin-table button {
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8c48d7, #b65ce6);
+  color: #fff;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.request-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.request-item {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.request-item button {
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #8c48d7, #b65ce6);
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.settings-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.settings-card {
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.upload-note {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.upload-controls,
+.upload-form {
+  display: grid;
+  gap: 10px;
+}
+
+.upload-controls {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.upload-form label {
+  display: grid;
+  gap: 6px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.upload-controls input[type="file"],
+.upload-form input[type="file"] {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.upload-controls button,
+.upload-form button {
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  justify-self: start;
+}
+
+.insta-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.insta-upload-card {
+  border: 1px dashed rgba(140, 72, 215, 0.45);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 14px;
+  text-align: center;
+  display: grid;
+  gap: 6px;
+}
+
+.insta-upload-card h4 {
+  margin: 4px 0 0;
+  font-size: 1.05rem;
+}
+
+.insta-upload-card p,
+.insta-upload-card small {
+  margin: 0;
+  color: var(--muted);
+}
+
+.upload-plus-trigger {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 0;
+  margin: 0 auto;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.upload-plus-trigger:hover {
+  transform: translateY(-1px);
+}
+
+.upload-selected {
+  display: block;
+  margin-top: 4px;
+  color: #334155;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.upload-hidden-input {
+  display: none;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.media-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.media-card img,
+.media-card video {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  background: #0f172a;
+}
+
+.settings-card h3 {
+  margin: 0 0 4px;
+}
+
+.settings-card label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.settings-card input,
+.settings-card select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.settings-card button {
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  padding: 11px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 980px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    gap: 14px;
+  }
+
+  .menu {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .logout-btn {
+    margin-top: 0;
+    max-width: 180px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .request-grid,
+  .settings-grid,
+  .admin-stats,
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insta-upload-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-search {
+    max-width: none;
+    width: 100%;
+  }
+}
+
